@@ -99,7 +99,8 @@ class Repository implements ArrayAccess, ConfigContract
      */
     public function prepend($key, $value)
     {
-        $array = $this->get($key);
+        // typecast into array for non array value type returned from this->get(key) to avoid fatal errors
+        $array = (array) $this->get($key);
 
         array_unshift($array, $value);
 
@@ -115,7 +116,8 @@ class Repository implements ArrayAccess, ConfigContract
      */
     public function push($key, $value)
     {
-        $array = $this->get($key);
+        // typecast into array for non array value type returned from this->get(key) to avoid fatal errors
+        $array = (array) $this->get($key);
 
         $array[] = $value;
 
